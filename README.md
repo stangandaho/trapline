@@ -3,14 +3,6 @@
 Offline mobile app for managing camera trap deployments. Its `deployments.csv`
 export follows the **Camtrap DP 1.0** deployments table.
 
-```
-cataploy/
-└── app/            Installable offline web app (PWA): plain HTML/CSS/JS, no build step
-    ├── js/         model.js (rules) · store.js (storage) · export.js (CSV) · views/
-    ├── vendor/     Leaflet 1.9.4 (bundled so the map works offline)
-    └── tests/      unit tests (Node)
-```
-
 ## The app
 
 | Screen | What it does |
