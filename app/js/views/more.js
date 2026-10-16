@@ -7,6 +7,7 @@ import { $, esc, readForm, toast, download, share, options, icons, ask } from '.
 import { formatDate, safeId } from '../util.js';
 import { layout } from './shell.js';
 import { zipBytes } from '../zip.js';
+import { getTheme, setTheme } from '../theme.js';
 
 export async function moreView({ root, project, rerender }) {
   const s = project.settings;
@@ -49,6 +50,12 @@ export async function moreView({ root, project, rerender }) {
           <input id="s-url" name="customTileUrl" value="${esc(s.customTileUrl)}" placeholder="https://server/{z}/{x}/{y}.png"></div>
         <button class="btn primary block" type="submit">Save settings</button>
       </form>
+
+      <section class="card">
+        <h2>Display</h2>
+        <div class="field"><label for="s-theme">Theme</label>
+          <select id="s-theme">${options({ system: 'System', light: 'Light', dark: 'Dark' }, getTheme())}</select></div>
+      </section>
 
       <section class="card">
         <h2>Storage</h2>
@@ -125,6 +132,9 @@ export async function moreView({ root, project, rerender }) {
     toast('Settings saved');
     rerender();
   });
+
+  // Theme applies at once and is kept on this phone (not part of the project)
+  $('#s-theme').addEventListener('change', (e) => setTheme(e.target.value));
 
   $('#del-project').addEventListener('click', async () => {
     const ok = await ask(`Delete ${project.name}?`, {

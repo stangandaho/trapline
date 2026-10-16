@@ -1,6 +1,7 @@
 import { openDB } from './db.js';
 import { canInstall, onInstallChange, install } from './install.js';
 import { startTranslating, setLang } from './i18n.js';
+import { applyTheme } from './theme.js';
 import { getProject } from './store.js';
 import { $, esc, toast } from './ui.js';
 import { projectsView } from './views/projects.js';
@@ -76,6 +77,7 @@ async function boot() {
   navigator.storage?.persist?.().catch(() => {});
   window.addEventListener('hashchange', render);
   startTranslating();
+  applyTheme();
   // Install button in the header: appears or disappears as the browser offers installation
   onInstallChange(() => {
     document.querySelectorAll('.install-slot').forEach((s) => {

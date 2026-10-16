@@ -42,8 +42,9 @@
   color-scheme: light;
 }
 
+/* Dark theme: follows the phone unless a theme is chosen in Settings (data-theme) */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #171312;
     --surface: #211b1a;
     --surface-2: #2b2321;
@@ -61,6 +62,24 @@
     --idle: #8c7b78;
     color-scheme: dark;
   }
+}
+:root[data-theme="dark"] {
+  --bg: #171312;
+  --surface: #211b1a;
+  --surface-2: #2b2321;
+  --text: #f3ecea;
+  --muted: #b8a6a3;
+  --border: #3a302e;
+  --border-strong: #5a4a47;
+  --accent: #ffdbd6;
+  --accent-soft: #3d2825;
+  --on-accent: #7f4841;
+  --ok: #5cbf86;
+  --warn: #e0a64a;
+  --bad: #ef7a6e;
+  --info: #8eaaf0;
+  --idle: #8c7b78;
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
@@ -433,12 +452,12 @@ span.flatpickr-weekday { color: var(--muted); font-weight: 500; font-size: 12px;
 /* EN | FR switch */
 .topbar-actions { display: flex; align-items: center; gap: 6px; }
 .topbar.home { justify-content: space-between; padding-right: 12px; }
-.lang {
+.topbar .lang {
   border: 1px solid var(--accent); border-radius: 50%; background: transparent; color: var(--accent);
   font: inherit; font-size: 11px; font-weight: 700; letter-spacing: .02em;
   width: 34px; height: 34px; padding: 0; display: grid; place-items: center; cursor: pointer;
 }
-.lang:active { background: var(--accent-soft); }
+.topbar .lang:active { background: var(--accent-soft); }
 
 /* Home: projects and actions centred in the screen */
 .home-main {
@@ -449,8 +468,8 @@ span.flatpickr-weekday { color: var(--muted); font-weight: 500; font-size: 12px;
 
 /* Install button in the header, same height as the language circle */
 .install-slot:empty { display: none; }
-.install-btn {
+.topbar .install-btn {
   height: 34px; padding: 0 12px; border: 0; border-radius: var(--r); cursor: pointer;
   background: var(--accent); color: var(--on-accent); font: inherit; font-size: 13px; font-weight: 600;
 }
-.install-btn:active { filter: brightness(.92); }
+.topbar .install-btn:active { filter: brightness(.92); }
