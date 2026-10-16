@@ -1,4 +1,5 @@
 import { openDB } from './db.js';
+import './install.js';
 import { startTranslating, setLang } from './i18n.js';
 import { getProject } from './store.js';
 import { $, esc, toast } from './ui.js';

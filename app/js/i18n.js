@@ -131,7 +131,7 @@ const FR = {
   'Custom URL must contain {z}, {x} and {y}': "L'URL doit contenir {z}, {x} et {y}", 'Settings saved': 'Paramètres enregistrés',
   'All cameras, deployments and checks are removed from this phone. Type the project name to confirm':
     'Toutes les caméras, déploiements et contrôles seront supprimés de ce téléphone. Tapez le nom du projet pour confirmer',
-  'Project deleted': 'Projet supprimé',
+  'Project deleted': 'Projet supprimé', 'Install app': "Installer l'application", 'App installed': 'Application installée',
 
   // app, sensors, storage and file errors
   'Back online': 'De retour en ligne', 'Offline, everything keeps working': 'Hors ligne, tout continue de fonctionner',
