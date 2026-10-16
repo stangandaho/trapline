@@ -1,0 +1,20 @@
+<svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<mask id="gear-cut">
+<rect width="24" height="24" fill="#fff"/>
+<g fill="#000">
+<rect x="10.9" y="5.2" width="2.2" height="2.6" rx="0.6"/>
+<rect x="10.9" y="5.2" width="2.2" height="2.6" rx="0.6" transform="rotate(45 12 12)"/>
+<rect x="10.9" y="5.2" width="2.2" height="2.6" rx="0.6" transform="rotate(90 12 12)"/>
+<rect x="10.9" y="5.2" width="2.2" height="2.6" rx="0.6" transform="rotate(135 12 12)"/>
+<rect x="10.9" y="5.2" width="2.2" height="2.6" rx="0.6" transform="rotate(180 12 12)"/>
+<rect x="10.9" y="5.2" width="2.2" height="2.6" rx="0.6" transform="rotate(225 12 12)"/>
+<rect x="10.9" y="5.2" width="2.2" height="2.6" rx="0.6" transform="rotate(270 12 12)"/>
+<rect x="10.9" y="5.2" width="2.2" height="2.6" rx="0.6" transform="rotate(315 12 12)"/>
+<circle cx="12" cy="12" r="4.9"/>
+</g>
+<circle cx="12" cy="12" r="2.1" fill="#fff"/>
+</mask>
+</defs>
+<path mask="url(#gear-cut)" d="M3.46447 20.5355C4.92893 22 7.28595 22 12 22C16.714 22 19.0711 22 20.5355 20.5355C22 19.0711 22 16.714 22 12C22 7.28595 22 4.92893 20.5355 3.46447C19.0711 2 16.714 2 12 2C7.28595 2 4.92893 2 3.46447 3.46447C2 4.92893 2 7.28595 2 12C2 16.714 2 19.0711 3.46447 20.5355Z" fill="#1C274C"/>
+</svg>
