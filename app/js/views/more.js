@@ -7,7 +7,6 @@ import { $, esc, readForm, toast, download, share, options, icons, ask } from '.
 import { formatDate, safeId } from '../util.js';
 import { layout } from './shell.js';
 import { zipBytes } from '../zip.js';
-import { canInstall, onInstallChange, install } from '../install.js';
 
 export async function moreView({ root, project, rerender }) {
   const s = project.settings;
@@ -21,7 +20,6 @@ export async function moreView({ root, project, rerender }) {
   root.innerHTML = layout({
     project, title: 'Settings', tab: 'more',
     body: `
-      <div id="install-slot"></div>
       <section class="card">
         <h2>Export</h2>
         <label class="check"><input type="checkbox" id="only-closed"> Only closed deployments</label>
@@ -128,18 +126,6 @@ export async function moreView({ root, project, rerender }) {
     rerender();
   });
 
-  // Install button: only while the browser offers installation
-  const showInstall = () => {
-    const slot = $('#install-slot');
-    if (!slot) return;
-    slot.innerHTML = canInstall() ? `<button class="btn primary block install-btn" id="install">${icons.download}Install app</button>` : '';
-    $('#install')?.addEventListener('click', async () => {
-      if (await install()) toast('App installed');
-    });
-  };
-  showInstall();
-  const stopInstallWatch = onInstallChange(showInstall);
-
   $('#del-project').addEventListener('click', async () => {
     const ok = await ask(`Delete ${project.name}?`, {
       ok: 'Delete', danger: true, typeToConfirm: project.name,
@@ -150,6 +136,4 @@ export async function moreView({ root, project, rerender }) {
     toast('Project deleted');
     location.hash = '#/';
   });
-
-  return stopInstallWatch;
 }

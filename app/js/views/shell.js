@@ -1,5 +1,6 @@
 import { esc, icons } from '../ui.js';
 import { getLang } from '../i18n.js';
+import { canInstall } from '../install.js';
 
 /** Top bar + content + bottom tab bar for project screens. */
 export function layout({ project, title, back, tab, body, actions = '', mainClass = '' }) {
@@ -29,7 +30,8 @@ export function layout({ project, title, back, tab, body, actions = '', mainClas
 export function langSwitch() {
   const l = getLang();
   const next = l === 'en' ? 'fr' : 'en';
-  return `<button type="button" class="lang" data-lang="${next}" aria-label="Language">${l.toUpperCase()}</button>`;
+  const inst = canInstall() ? '<button type="button" class="install-btn" data-install>Install</button>' : '';
+  return `<span class="install-slot">${inst}</span><button type="button" class="lang" data-lang="${next}" aria-label="Language">${l.toUpperCase()}</button>`;
 }
 
 /** Icon from app/icons/<name>.svg, coloured with currentColor through a CSS mask. */

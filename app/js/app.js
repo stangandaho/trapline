@@ -1,5 +1,5 @@
 import { openDB } from './db.js';
-import './install.js';
+import { canInstall, onInstallChange, install } from './install.js';
 import { startTranslating, setLang } from './i18n.js';
 import { getProject } from './store.js';
 import { $, esc, toast } from './ui.js';
@@ -76,6 +76,16 @@ async function boot() {
   navigator.storage?.persist?.().catch(() => {});
   window.addEventListener('hashchange', render);
   startTranslating();
+  // Install button in the header: appears or disappears as the browser offers installation
+  onInstallChange(() => {
+    document.querySelectorAll('.install-slot').forEach((s) => {
+      s.innerHTML = canInstall() ? '<button type="button" class="install-btn" data-install>Install</button>' : '';
+    });
+  });
+  document.addEventListener('click', async (e) => {
+    if (!e.target.closest('[data-install]')) return;
+    if (await install()) toast('App installed');
+  });
   // EN | FR switch: re-render the current screen in the chosen language
   document.addEventListener('click', (e) => {
     const b = e.target.closest('[data-lang]');

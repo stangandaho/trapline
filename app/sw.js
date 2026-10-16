@@ -1,6 +1,6 @@
 // App-shell service worker: cache-first so the app opens with no network.
 // Bump VERSION whenever a shell file changes.
-const VERSION = 'trapline-v35';
+const VERSION = 'trapline-v36';
 const SHELL = [
   './',
   'index.html',

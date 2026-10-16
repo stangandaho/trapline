@@ -447,5 +447,10 @@ span.flatpickr-weekday { color: var(--muted); font-weight: 500; font-size: 12px;
   display: flex; flex-direction: column; justify-content: center;
 }
 
-/* Install button at the top of Settings */
-.install-btn { margin: 0 auto 12px; }
+/* Install button in the header, same height as the language circle */
+.install-slot:empty { display: none; }
+.install-btn {
+  height: 34px; padding: 0 12px; border: 0; border-radius: var(--r); cursor: pointer;
+  background: var(--accent); color: var(--on-accent); font: inherit; font-size: 13px; font-weight: 600;
+}
+.install-btn:active { filter: brightness(.92); }
